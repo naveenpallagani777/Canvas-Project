@@ -5,9 +5,31 @@ const CanvasContext = createContext();
 
 // Create a provider component
 export const CanvasProvider = ({ children }) => {
-  const [canvasState, setCanvasState] = useState({ cards: [], connections: [] });
+    let [cards, setCards] = useState([
+        {
+          id: "card-0",
+          text: "This is some dummy text...",
+          detailedText: "This is the full detailed text of the card.",
+          x: 300,
+          y: 94,
+          width: 200,
+          height: 100
+        },
+        {
+          id: "card-1",
+          text: "This is some dummy text...",
+          detailedText: "This is the full detailed text of the card.",
+          x: 50,
+          y: 50,
+          width: 200,
+          height: 100
+        }
+      ]);
+      let [popupInput,setInput] = useState(false);
+      let [change, setChange]  = useState(true);
+      const [connections, setConnections] = useState([{ from: 'card-0', to: 'card-1' }]);
   return (
-    <CanvasContext.Provider value={{ canvasState, setCanvasState }}>
+    <CanvasContext.Provider value={{ cards, setCards, connections, setConnections, popupInput, setInput, change, setChange}}>
       {children}
     </CanvasContext.Provider>
   );
