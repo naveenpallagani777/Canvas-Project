@@ -114,11 +114,15 @@ const Canvas = () => {
           >
             <p>
               {card.text.slice(0, 20)}...
-              <button onClick={(e) => { e.stopPropagation(); openPopup(card.detailedText); }} className='border border-lime-500 p-2 rounded-md absolute left-2 bottom-2 font-medium'>Show more</button>
+              <button onClick={(e) => { e.stopPropagation(); openPopup(card.detailedText); }}
+                 className='border border-lime-500 p-2 rounded-md absolute left-2 bottom-2 font-medium'
+                 onTouchEnd = {() => {openPopup(card.detailedText);}}
+                 >Show more</button>
             </p>
             {/* Remove Button */}
             <button className='bg-red-700 text-blue-100 px-2 font-medium absolute right-2 bottom-2'
               onClick={(e) => { e.stopPropagation(); removeCard(card.id); }}
+              onTouchEnd = {() => {removeCard(card.id);}}
             >
               X
             </button>
