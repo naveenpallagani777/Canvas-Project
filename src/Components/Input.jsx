@@ -21,7 +21,7 @@ const Input = () => {
     
     // Create a new card object
     const newCard = {
-      id: `card-${cards.length}`,
+      id: `card-${Math.floor((Math.random()*100000000)) + 100}`,
       text: text.current.value,
       detailedText: desc.current.value,
       x: x,
@@ -42,7 +42,7 @@ const Input = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 p-4 backdrop-blur-xl w-96 border md:w-[700px] rounded-md">
+    <div className="flex flex-col gap-4 px-4 py-7 backdrop-blur-xl w-96 border md:w-[700px] rounded-md bg-gray-500">
       <input
         type="text"
         placeholder="Title"
@@ -63,8 +63,8 @@ const Input = () => {
         ref={desc}
       />
       <div className="flex gap-6 justify-center">
-        <button className="border p-2 rounded-md" onClick={addCard}>SUBMIT</button>
-        <button className="border p-2 rounded-md" onClick={() => { setInput(false) }}>CANCEL</button>
+        <button className="border p-2 rounded-md bg-green-500 text-white" onClick={addCard}>SUBMIT</button>
+        <button className="border p-2 rounded-md bg-red-500 text-white" onClick={() => { setInput(false) }}>CANCEL</button>
       </div>
     </div>
   );
